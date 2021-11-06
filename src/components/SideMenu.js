@@ -11,6 +11,8 @@ import {ReactComponent as SettingsIcon} from '../assets/icons/Settings_Icon.svg'
 import {ReactComponent as UserStatus} from '../assets/icons/User_Status.svg'
 import { ReactComponent as DownArrow } from '../assets/downArrow.svg'
 
+import "./FloatingMenu.css";
+
 import MenuItem from "./MenuItem";
 
 /**
@@ -82,8 +84,6 @@ const SideMenu = (props) => {
 
     props.onCollapse(inactive);
   }, [inactive]);
-
-  //just an improvment and it is not recorded in video :(
   const removeActiveClassFromSubMenu = () => {
     document.querySelectorAll(".sub-menu").forEach((el) => {
       el.classList.remove("active");
