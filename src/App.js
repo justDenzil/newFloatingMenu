@@ -31,36 +31,6 @@ function App() {
                 : null}
             </>
           ))}
-
-          {/* <Switch>
-            <Route exact path={"/"}>
-              <Dashboard />
-            </Route>
-            <Route exact path={"/content"}>
-              <Content />
-            </Route>
-            <Route path={"/content/courses"}>
-              <Courses />
-            </Route>
-            <Route path={"/content/videos"}>
-              <Videos />
-            </Route>
-            <Route path={"/design"}>
-              <Design />
-            </Route>
-            <Route exact path={"/content-2"}>
-              <Content2 />
-            </Route>
-            <Route path={"/content-2/courses"}>
-              <Courses2 />
-            </Route>
-            <Route path={"/content-2/videos"}>
-              <Videos2 />
-            </Route>
-            <Route path={"/design-2"}>
-              <Design2 />
-            </Route>
-          </Switch> */}
         </div>
       </Router>
     </div>
