@@ -148,7 +148,6 @@ body{
 
 
 .side-menu .main-menu .sub-menu a.active{
-    /* change in background, not recorded in video */
     background: linear-gradient(87.37deg, #315B81 0%, #003463 95.9%);
     border-radius: 10px;
     display: block;
