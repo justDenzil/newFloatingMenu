@@ -125,7 +125,6 @@ const SideMenu = (props) => {
         </div>
         <div className="divider">
         </div>
-
       <div className="main-menu">
         <ul>
           {menuItems.map((menuItem, index) => (
@@ -145,6 +144,35 @@ const SideMenu = (props) => {
           ))}
         </ul>
       </div>
+      <div className={`bottom-menu ${inactive ? "inactive" : ""}`}>
+        <div className="bottom-menu-item-container">
+        <div className="bottom-menu-icon-container">
+          <NotificationsIcon />
+        </div>
+        <div className="title-container">
+          Notifications
+        </div>
+        </div>
+        <div className="bottom-menu-item-container">
+        <div className="icon-container">
+          <SettingsIcon />
+        </div>
+        <div className="title-container">
+          Settings
+        </div>
+        </div>
+        <div className="bottom-divider">
+        </div>
+        <div className="bottom-menu-item-container">
+        <div className="bottom-menu-icon-container">
+          <UserStatus />
+        </div>
+        <div className="title-container">
+          Umesh
+        </div>
+        </div>
+      </div>
+      
     </div>
   );
 };

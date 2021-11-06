@@ -89,6 +89,13 @@ body{
     text-align: center;
 }
 
+.side-menu.inactive .main-menu .menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .side-menu .main-menu .menu-item.active .menu-icon{
     color: #f5c90e;
     text-align: center;
@@ -278,4 +285,44 @@ body{
     background: #EEEFF8;
     border-radius: 2px;
     margin-top: 15px;
+}
+
+.bottom-divider {
+    width: 90%;
+    height: 3px;
+    background: #EEEFF8;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.bottom-menu {
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+}
+
+.bottom-menu-item-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.bottom-menu-item-container .title-container{
+    padding-left: 10px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #6F91A8;
+    opacity: 1;
+}
+
+.bottom-menu.inactive .bottom-menu-item-container .title-container{
+    display: none;
+}
+
+.bottom-menu-icon-container {
 }
