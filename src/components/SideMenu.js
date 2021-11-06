@@ -25,7 +25,7 @@ export const menuItems = [
     name: "Create",
     exact: true,
     to: "/",
-    iconClassName: "bi bi-speedometer2",
+    iconClassName: "bi bi-file-earmark-plus",
     subMenus: [
       { name: "Contact", to: "/content/Contact" },
       { name: "Project", to: "/content/Project" },
@@ -36,7 +36,7 @@ export const menuItems = [
     name: "Manage",
     exact: true,
     to: `/`,
-    iconClassName: "bi bi-speedometer2",
+    iconClassName: "bi bi-calendar4-range",
     subMenus: [
       { name: "Organization", to: "/content/Organization" },
       { name: "Contact", to: "/content/Contact" },
@@ -51,19 +51,19 @@ export const menuItems = [
     name: "Generate",
     exact: true,
     to: `/content-2`,
-    iconClassName: "bi bi-speedometer2",
+    iconClassName: "bi bi-pencil-square",
     subMenus: [
       { name: "Estimate", to: "/content/Estimate" },
       { name: "Invoice", to: "/content/Invoice" },
       { name: "PO", to: "/content/PO" },
-      { name: "Tax Payslip", to: "/content/Tax Payslip", iconClassName: "bi bi-speedometer2" },
+      { name: "Tax Payslip", to: "/content/Tax Payslip"},
     ],
   },
   {
     name: "Analyse",
     exact: true,
     to: `/content-2`,
-    iconClassName: "bi bi-speedometer2",
+    iconClassName: "bi bi-file-earmark-ruled",
     subMenus: [
       { name: "Revenue", to: "/content/Revenue" },
       { name: "Expense", to: "/content/Expense" },
