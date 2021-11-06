@@ -91,6 +91,8 @@ body{
 
 .side-menu .main-menu .menu-item.active .menu-icon{
     color: #f5c90e;
+    text-align: center;
+
 }
 
 .side-menu .main-menu .menu-item span{
