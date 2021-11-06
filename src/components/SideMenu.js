@@ -14,11 +14,10 @@ import { ReactComponent as DownArrow } from '../assets/downArrow.svg'
 import MenuItem from "./MenuItem";
 
 /**
- * @author
+ * @author 
  * @function SideMenu
  **/
 
-// added more menuItems for testing
 export const menuItems = [
   {
     name: "Create",
@@ -52,10 +51,10 @@ export const menuItems = [
     to: `/content-2`,
     iconClassName: "bi bi-speedometer2",
     subMenus: [
-      { name: "Estimate", to: "/content-2/Estimate" },
-      { name: "Invoice", to: "/content-2/Invoice" },
-      { name: "PO", to: "/content-2/PO" },
-      { name: "Tax Payslip", to: "/content-2/Tax Payslip", iconClassName: "bi bi-speedometer2" },
+      { name: "Estimate", to: "/content/Estimate" },
+      { name: "Invoice", to: "/content/Invoice" },
+      { name: "PO", to: "/content/PO" },
+      { name: "Tax Payslip", to: "/content/Tax Payslip", iconClassName: "bi bi-speedometer2" },
     ],
   },
   {
@@ -64,11 +63,11 @@ export const menuItems = [
     to: `/content-2`,
     iconClassName: "bi bi-speedometer2",
     subMenus: [
-      { name: "Revenue", to: "/content-2/Revenue" },
-      { name: "Expense", to: "/content-2/Expense" },
-      { name: "Statutory", to: "/content-2/Statutory" },
-      { name: "People", to: "/content-2/People" },
-      { name: "Growth", to: "/content-2/Growth" },
+      { name: "Revenue", to: "/content/Revenue" },
+      { name: "Expense", to: "/content/Expense" },
+      { name: "Statutory", to: "/content/Statutory" },
+      { name: "People", to: "/content/People" },
+      { name: "Growth", to: "/content/Growth" },
     ],
   },
 ];
@@ -91,9 +90,7 @@ const SideMenu = (props) => {
     });
   };
 
-  /*just a little improvement over click function of menuItem
-    Now no need to use expand state variable in MenuItem component
-  */
+
   useEffect(() => {
     let menuItems = document.querySelectorAll(".menu-item");
     menuItems.forEach((el) => {
