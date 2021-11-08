@@ -7,7 +7,7 @@ import { NavLink, Link } from "react-router-dom";
  **/
 
 const MenuItem = (props) => {
-  const { name, subMenus, iconClassName, onClick, to, exact } = props;
+  const { name, subMenus, iconClassName, closeIconClassName, onClick, to, exact } = props;
   const [expand, setExpand] = useState(false);
 
   return (
@@ -21,6 +21,9 @@ const MenuItem = (props) => {
           <i class={iconClassName}></i>
         </div>
         <span>{name}</span>
+        <div className="close-menuItem-icon">
+          <i class={closeIconClassName}></i>
+        </div>
       </Link>
       {subMenus && subMenus.length > 0 ? (
         <ul className={`sub-menu`}>

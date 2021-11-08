@@ -2,15 +2,10 @@ import React, { useEffect, useState } from "react";
 import {ReactComponent as BackButton} from '../assets/BackButton.svg'
 import {ReactComponent as FrontButton} from '../assets/FrontButton.svg'
 import {ReactComponent as UploadLogoImage} from '../assets/Upload_Logo_SVG.svg'
-import {ReactComponent as CreateIcon} from '../assets/icons/Create_Icon.svg'
-import {ReactComponent as ManageIcon} from '../assets/icons/Manage_Icon.svg'
-import {ReactComponent as GenerateIcon} from '../assets/icons/Generate_Icon.svg'
-import {ReactComponent as AnalyseIcon} from '../assets/icons/Analyse_Icon.svg'
 import {ReactComponent as NotificationsIcon} from '../assets/icons/Notifications_Icon.svg'
 import {ReactComponent as SettingsIcon} from '../assets/icons/Settings_Icon.svg'
 import {ReactComponent as UserStatus} from '../assets/icons/User_Status.svg'
-import { ReactComponent as DownArrow } from '../assets/downArrow.svg'
-
+import "../assets/style.css";
 import "./FloatingMenu.css";
 
 import MenuItem from "./MenuItem";
@@ -25,25 +20,28 @@ export const menuItems = [
     name: "Create",
     exact: true,
     to: "/",
-    iconClassName: "bi bi-file-earmark-plus",
+    iconClassName: "icon-Create_Icon",
+    closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Contact", to: "/content/Contact" },
-      { name: "Project", to: "/content/Project" },
-      { name: "Catalogue", to: "/content/Catalogue" },
+      { name: "Contact", to: "/content/Contact", iconClassName: "icon-Contact_Icon" },
+      { name: "Organization", to: "/content/Contact", iconClassName: "icon-Organization_Icon" },
+      { name: "Project", to: "/content/Project",iconClassName: "icon-Project_Icon" },
+      { name: "Catalogue", to: "/content/Catalogue", iconClassName: "icon-Catalogue_Icon" },
     ],
   },
   {
     name: "Manage",
     exact: true,
     to: `/`,
-    iconClassName: "bi bi-calendar4-range",
+    iconClassName: "icon-Manage_Icon",
+    closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Organization", to: "/content/Organization" },
-      { name: "Contact", to: "/content/Contact" },
-      { name: "Project", to: "/content/Project" },
-      { name: "Resources", to: "/content/Resources" },
-      { name: "Timesheets", to: "/content/Timesheets" },
-      { name: "Privileges", to: "/content/Prvileges" },
+      { name: "Organization", to: "/content/Organization", iconClassName: "icon-Organization_Icon"},
+      { name: "Contact", to: "/content/Contact", iconClassName: "icon-Contact_Icon"},
+      { name: "Project", to: "/content/Project", iconClassName: "icon-Project_Icon"},
+      { name: "Resources", to: "/content/Resources", iconClassName: "icon-Resources_Icon"},
+      { name: "Timesheets", to: "/content/Timesheets", iconClassName: "icon-Timesheets_Icon"},
+      { name: "Privileges", to: "/content/Prvileges", iconClassName: "icon-Privileges_Icon" },
     ],
   },
 
@@ -51,25 +49,27 @@ export const menuItems = [
     name: "Generate",
     exact: true,
     to: `/content-2`,
-    iconClassName: "bi bi-pencil-square",
+    iconClassName: "icon-Generate_Icon",
+    closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Estimate", to: "/content/Estimate" },
-      { name: "Invoice", to: "/content/Invoice" },
-      { name: "PO", to: "/content/PO" },
-      { name: "Tax Payslip", to: "/content/Tax Payslip"},
+      { name: "Estimate", to: "/content/Estimate", iconClassName: "icon-Generate_Icon"},
+      { name: "Invoice", to: "/content/Invoice", iconClassName: "icon-Invoice_Icon"},
+      { name: "PO", to: "/content/PO", iconClassName: "icon-Invoice_Icon" },
+      { name: "Tax Payslip", to: "/content/Tax Payslip", iconClassName: "icon-TaxPayslip_Icon"},
     ],
   },
   {
     name: "Analyse",
     exact: true,
     to: `/content-2`,
-    iconClassName: "bi bi-file-earmark-ruled",
+    iconClassName: "icon-Analyse_Icon",
+    closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Revenue", to: "/content/Revenue" },
-      { name: "Expense", to: "/content/Expense" },
-      { name: "Statutory", to: "/content/Statutory" },
-      { name: "People", to: "/content/People" },
-      { name: "Growth", to: "/content/Growth" },
+      { name: "Revenue", to: "/content/Revenue", iconClassName: "icon-Revenue_Icon"},
+      { name: "Expense", to: "/content/Expense",iconClassName: "icon-Expense_Icon" },
+      { name: "Statutory", to: "/content/Statutory",  iconClassName: "icon-Statutory_icon"},
+      { name: "People", to: "/content/People", iconClassName: "icon-People_Icon"},
+      { name: "Growth", to: "/content/Growth", iconClassName: "icon-Growth_Icon"},
     ],
   },
 ];
@@ -84,11 +84,15 @@ const SideMenu = (props) => {
 
     props.onCollapse(inactive);
   }, [inactive]);
+
+  
   const removeActiveClassFromSubMenu = () => {
     document.querySelectorAll(".sub-menu").forEach((el) => {
       el.classList.remove("active");
     });
   };
+
+  
 
 
   useEffect(() => {
@@ -135,6 +139,7 @@ const SideMenu = (props) => {
               to={menuItem.to}
               subMenus={menuItem.subMenus || []}
               iconClassName={menuItem.iconClassName}
+              closeIconClassName={menuItem.closeIconClassName}
               onClick={(e) => {
                 if (inactive) {
                   setInactive(false);
