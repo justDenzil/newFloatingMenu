@@ -188,14 +188,12 @@ body{
     margin-left: 10px;
 }
 
-
-
-
-.side-menu .main-menu .sub-menu a.active{
-    border-radius: 5px;
-    color:#6F91A8;
-
+.side-menu .main-menu .sub-menu.active a.active .sub-menu-title{
+    margin-left: 10px;
+    font-weight: bold;
 }
+
+
 
 .side-menu-footer{
     width: 100%;
