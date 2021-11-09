@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 
 function App() {
   const [inactive, setInactive] = useState(false);
-  const [open, setIsOpen] = useState(false);
+  const [open, setIsOpen] = useState(true);
 
   let menuRef = useRef();
 
@@ -28,10 +28,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="hamburger"  onClick={() => {setIsOpen(!open);}}>
+        <div ref={menuRef} className="hamburger"  onClick={() => setIsOpen((open) => !open)}>
         <HamburgerMenu/>
         </div>
-        <div ref={menuRef} className={`menu-container ${open ? "active" : ""}`}>
+        <div className={`menu-container ${open ? "active" : ""}`}>
         <SideMenu
           onCollapse={(inactive) => {
             console.log(inactive);

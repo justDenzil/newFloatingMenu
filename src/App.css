@@ -1,3 +1,9 @@
 .menu-container.active {
     display: none;
+    width: 0px;
+    height: 0px;
+}
+
+.menu-container {
+
 }
