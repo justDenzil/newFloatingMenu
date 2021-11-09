@@ -52,7 +52,7 @@ function App() {
               </Route>
               {menu.subMenus && menu.subMenus.length > 0
                 ? menu.subMenus.map((subMenu, i) => (
-                    <Route key={subMenu.name} path={subMenu.to}>
+                    <Route key={subMenu.name} exact={menu.exact} path={subMenu.to}>
                     </Route>
                   ))
                 : null}

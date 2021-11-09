@@ -32,7 +32,7 @@ export const menuItems = [
     iconClassName: "icon-Manage_Icon",
     closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Organization", to: "/Manage/Organization", iconClassName: "icon-Organization_Icon"},
+      { name: "Organization", to: "/pages/Manage/Organization", iconClassName: "icon-Organization_Icon"},
       { name: "Contact", to: "/Manage/Contact", iconClassName: "icon-Contact_Icon"},
       { name: "Project", to: "/Manage/Project", iconClassName: "icon-Project_Icon"},
       { name: "Resources", to: "/Manage/Resources", iconClassName: "icon-Resources_Icon"},
