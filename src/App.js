@@ -2,11 +2,28 @@ import "./App.css";
 import SideMenu, { menuItems } from "./components/SideMenu";
 import HamburgerMenu from "./components/Hamburger";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function App() {
   const [inactive, setInactive] = useState(false);
   const [open, setIsOpen] = useState(false);
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setIsOpen(true);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+
+  });
 
   return (
     <div className="App">
@@ -14,7 +31,7 @@ function App() {
         <div className="hamburger"  onClick={() => {setIsOpen(!open);}}>
         <HamburgerMenu/>
         </div>
-        <div className={`menu-container ${open ? "active" : ""}`}>
+        <div ref={menuRef} className={`menu-container ${open ? "active" : ""}`}>
         <SideMenu
           onCollapse={(inactive) => {
             console.log(inactive);
