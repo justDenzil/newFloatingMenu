@@ -28,10 +28,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div ref={menuRef} className="hamburger"  onClick={() => setIsOpen((open) => !open)}>
+        <div  className="hamburger"  onClick={() => setIsOpen((open) => !open)}>
         <HamburgerMenu/>
         </div>
-        <div className={`menu-container ${open ? "active" : ""}`}>
+        <div ref={menuRef} className={`menu-container ${open ? "active" : ""}`}>
         <SideMenu
           onCollapse={(inactive) => {
             console.log(inactive);
