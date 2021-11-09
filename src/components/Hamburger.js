@@ -1,19 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ReactComponent as Hamburger } from '../assets/hamburger.svg'
 import { ReactComponent as DownArrow } from '../assets/downArrow.svg'
 import './Hamburger.css'
-import FloatingMenu from './FloatingMenu';
 
 
 function HamburgerMenu() {
-
-    const [open, setOpen] = useState(false);
-
     return (
         <>
             <div className="header">
                 <div className="hamburger-container">
-                    <Hamburger className="menu-icon" onClick={() => setOpen(!open)}  />
+                    <Hamburger className="menu-icon"/>
                 </div>
                 <div className="company-container">
                         <div className="company-name">Apple Inc.</div>
@@ -22,7 +18,6 @@ function HamburgerMenu() {
                         </div>
                 </div>
             </div>
-        {open && <FloatingMenu/>}
         </>
     )
 }

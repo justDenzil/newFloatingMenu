@@ -1,22 +1,27 @@
 import "./App.css";
 import SideMenu, { menuItems } from "./components/SideMenu";
+import HamburgerMenu from "./components/Hamburger";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
 function App() {
   const [inactive, setInactive] = useState(false);
+  const [open, setIsOpen] = useState(false);
 
   return (
     <div className="App">
       <Router>
+        <div className="hamburger"  onClick={() => {setIsOpen(!open);}}>
+        <HamburgerMenu/>
+        </div>
+        <div className={`menu-container ${open ? "active" : ""}`}>
         <SideMenu
           onCollapse={(inactive) => {
             console.log(inactive);
             setInactive(inactive);
           }}
         />
-
-        <div className={`container ${inactive ? "inactive" : ""}`}>
+        </div>
           {menuItems.map((menu, index) => (
             <>
               <Route key={menu.name} exact={menu.exact} path={menu.to}>
@@ -24,13 +29,11 @@ function App() {
               {menu.subMenus && menu.subMenus.length > 0
                 ? menu.subMenus.map((subMenu, i) => (
                     <Route key={subMenu.name} path={subMenu.to}>
-                      <h1>{subMenu.name}</h1>
                     </Route>
                   ))
                 : null}
             </>
           ))}
-        </div>
       </Router>
     </div>
   );

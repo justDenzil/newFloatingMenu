@@ -104,6 +104,8 @@ const SideMenu = (props) => {
 
 //Code for closing menu onClick outside the menu
 
+/*
+
   let [isOpen, setIsOpen] = useState(false);
 
   let menuRef = useRef();
@@ -123,10 +125,12 @@ const SideMenu = (props) => {
 
   });
 
+*/
+
 //------------------------------------------------------------------
 
   return (
-    <div ref={menuRef} className="menu-container">
+    <div /*ref={menuRef}*/ className="menu-container">
     <div className={`side-menu ${inactive ? "inactive" : ""}`}>
       <div className="toggle-menu-btn" onClick={() => {setInactive(!inactive);}}>
             {inactive ? (
