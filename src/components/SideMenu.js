@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {ReactComponent as BackButton} from '../assets/BackButton.svg'
 import {ReactComponent as FrontButton} from '../assets/FrontButton.svg'
 import {ReactComponent as UploadLogoImage} from '../assets/Upload_Logo_SVG.svg'
@@ -18,58 +18,50 @@ import MenuItem from "./MenuItem";
 export const menuItems = [
   {
     name: "Create",
-    exact: true,
-    to: "/",
     iconClassName: "icon-Create_Icon",
     closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Contact", to: "/content/Contact", iconClassName: "icon-Contact_Icon" },
-      { name: "Organization", to: "/content/Contact", iconClassName: "icon-Organization_Icon" },
-      { name: "Project", to: "/content/Project",iconClassName: "icon-Project_Icon" },
-      { name: "Catalogue", to: "/content/Catalogue", iconClassName: "icon-Catalogue_Icon" },
+      { name: "Contact", to: "/Create/Contact", iconClassName: "icon-Contact_Icon" },
+      { name: "Organization", to: "/Create/Organization", iconClassName: "icon-Organization_Icon" },
+      { name: "Project", to: "/Create/Project",iconClassName: "icon-Project_Icon" },
+      { name: "Catalogue", to: "/Create/Catalogue", iconClassName: "icon-Catalogue_Icon" },
     ],
   },
   {
     name: "Manage",
-    exact: true,
-    to: `/`,
     iconClassName: "icon-Manage_Icon",
     closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Organization", to: "/content/Organization", iconClassName: "icon-Organization_Icon"},
-      { name: "Contact", to: "/content/Contact", iconClassName: "icon-Contact_Icon"},
-      { name: "Project", to: "/content/Project", iconClassName: "icon-Project_Icon"},
-      { name: "Resources", to: "/content/Resources", iconClassName: "icon-Resources_Icon"},
-      { name: "Timesheets", to: "/content/Timesheets", iconClassName: "icon-Timesheets_Icon"},
-      { name: "Privileges", to: "/content/Prvileges", iconClassName: "icon-Privileges_Icon" },
+      { name: "Organization", to: "/Manage/Organization", iconClassName: "icon-Organization_Icon"},
+      { name: "Contact", to: "/Manage/Contact", iconClassName: "icon-Contact_Icon"},
+      { name: "Project", to: "/Manage/Project", iconClassName: "icon-Project_Icon"},
+      { name: "Resources", to: "/Manage/Resources", iconClassName: "icon-Resources_Icon"},
+      { name: "Timesheets", to: "/Manage/Timesheets", iconClassName: "icon-Timesheets_Icon"},
+      { name: "Privileges", to: "/Manage/Prvileges", iconClassName: "icon-Privileges_Icon" },
     ],
   },
 
   {
     name: "Generate",
-    exact: true,
-    to: `/content-2`,
     iconClassName: "icon-Generate_Icon",
     closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Estimate", to: "/content/Estimate", iconClassName: "icon-Generate_Icon"},
-      { name: "Invoice", to: "/content/Invoice", iconClassName: "icon-Invoice_Icon"},
-      { name: "PO", to: "/content/PO", iconClassName: "icon-Invoice_Icon" },
-      { name: "Tax Payslip", to: "/content/Tax Payslip", iconClassName: "icon-TaxPayslip_Icon"},
+      { name: "Estimate", to: "/Generate/Estimate", iconClassName: "icon-Generate_Icon"},
+      { name: "Invoice", to: "/Generate/Invoice", iconClassName: "icon-Invoice_Icon"},
+      { name: "PO", to: "/Generate/PO", iconClassName: "icon-Invoice_Icon" },
+      { name: "Tax Payslip", to: "/Generate/Tax Payslip", iconClassName: "icon-TaxPayslip_Icon"},
     ],
   },
   {
     name: "Analyse",
-    exact: true,
-    to: `/content-2`,
     iconClassName: "icon-Analyse_Icon",
     closeIconClassName: "bi bi-chevron-up",
     subMenus: [
-      { name: "Revenue", to: "/content/Revenue", iconClassName: "icon-Revenue_Icon"},
-      { name: "Expense", to: "/content/Expense",iconClassName: "icon-Expense_Icon" },
-      { name: "Statutory", to: "/content/Statutory",  iconClassName: "icon-Statutory_icon"},
-      { name: "People", to: "/content/People", iconClassName: "icon-People_Icon"},
-      { name: "Growth", to: "/content/Growth", iconClassName: "icon-Growth_Icon"},
+      { name: "Revenue", to: "/Analyse/Revenue", iconClassName: "icon-Revenue_Icon"},
+      { name: "Expense", to: "/Analyse/Expense",iconClassName: "icon-Expense_Icon" },
+      { name: "Statutory", to: "/Analyse/Statutory",  iconClassName: "icon-Statutory_icon"},
+      { name: "People", to: "/Analyse/People", iconClassName: "icon-People_Icon"},
+      { name: "Growth", to: "/Analyse/Growth", iconClassName: "icon-Growth_Icon"},
     ],
   },
 ];
@@ -92,7 +84,6 @@ const SideMenu = (props) => {
     });
   };
 
-  
 
 
   useEffect(() => {
@@ -111,7 +102,31 @@ const SideMenu = (props) => {
     });
   }, []);
 
+//Code for closing menu onClick outside the menu
+
+  let [isOpen, setIsOpen] = useState(false);
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+
+  });
+
+//------------------------------------------------------------------
+
   return (
+    <div ref={menuRef} className="menu-container">
     <div className={`side-menu ${inactive ? "inactive" : ""}`}>
       <div className="toggle-menu-btn" onClick={() => {setInactive(!inactive);}}>
             {inactive ? (
@@ -178,6 +193,7 @@ const SideMenu = (props) => {
         </div>
       </div>
       
+    </div>
     </div>
   );
 };

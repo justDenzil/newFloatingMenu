@@ -175,8 +175,8 @@ body{
 .side-menu .main-menu .sub-menu a{
     display: inline-block;
     margin: 5px 0;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: normal;
     text-decoration: none;
     color: #6F91A8;
     box-sizing: border-box;
