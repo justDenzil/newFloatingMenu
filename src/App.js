@@ -8,21 +8,28 @@ function App() {
   const [inactive, setInactive] = useState(false);
   const [open, setIsOpen] = useState(true);
 
-  let menuRef = useRef();
+  let useClickOutside = (handler) => {
+    let domNode = useRef();
+  
+    useEffect(() => {
+      let maybeHandler = (event) => {
+        if (!domNode.current.contains(event.target)) {
+          handler();
+        }
+      };
+  
+      document.addEventListener("mousedown", maybeHandler);
+  
+      return () => {
+        document.removeEventListener("mousedown", maybeHandler);
+      };
+    });
+  
+    return domNode;
+  };
 
-  useEffect(() => {
-    let handler = (event) => {
-      if (!menuRef.current.contains(event.target)) {
-        setIsOpen(true);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-
+  let domNode = useClickOutside(() => {
+    setIsOpen(true);
   });
 
   return (
@@ -31,7 +38,7 @@ function App() {
         <div  className="hamburger"  onClick={() => setIsOpen((open) => !open)}>
         <HamburgerMenu/>
         </div>
-        <div ref={menuRef} className={`menu-container ${open ? "active" : ""}`}>
+        <div ref={domNode} className={`menu-container ${open ? "active" : ""}`}>
         <SideMenu
           onCollapse={(inactive) => {
             console.log(inactive);
